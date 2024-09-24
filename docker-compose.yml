@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  sio:
+    build: .
+    ports:
+      - "80:3000"
+    environment:
+      - MONGODB_URI=mongodb://Sio:SIO2023@DBMongo:27017/SIO?authSource=admin
+    links:
+      - DBMongo
+  DBMongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=Sio
+      - MONGO_INITDB_ROOT_PASSWORD=SIO2023
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
