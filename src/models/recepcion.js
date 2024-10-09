@@ -68,6 +68,12 @@ let RecepcionSchema = new Schema([{
         type:String,
         required:[true, 'Debes ingresar un transportista']
     },
+    resultados:[{
+        type:String
+    }],
+    observacion:[{
+        type:String
+    }],
     condicion:[{
         Certificado_de_calidad:{type:Boolean},
         Identificacion_del_lote:{type:Boolean},
