@@ -28,7 +28,7 @@ module.exports = (io) => {
     const emitirProductos = async () =>{
         try {
             const Producto = await producto.find({borrado:false})
-                                                .populate('identificacion.cliente identificacion.categoria materia_prima.sustrato materia_prima.tintas.tinta materia_prima.barnices.barniz pre_impresion.tamano_sustrato.montajes pre_impresion.tamano_sustrato.margenes pre_impresion.plancha impresion.impresoras impresion.pinzas post_impresion.troqueladora post_impresion.guillotina post_impresion.pegadora post_impresion.pegamento.pega post_impresion.caja')
+                                                .populate('pre_impresion.pelicula.tintas.tinta identificacion.cliente identificacion.categoria materia_prima.sustrato materia_prima.tintas.tinta materia_prima.barnices.barniz pre_impresion.tamano_sustrato.montajes pre_impresion.tamano_sustrato.margenes pre_impresion.plancha impresion.impresoras impresion.pinzas post_impresion.troqueladora post_impresion.guillotina post_impresion.pegadora post_impresion.pegamento.pega post_impresion.caja')
                                                 .populate({
                                                     path: 'materia_prima.sustrato',
                                                     populate: 'fabricante grupo especificacion especificacion2'
@@ -43,6 +43,10 @@ module.exports = (io) => {
                                                 })
                                                 .populate({
                                                     path: 'impresion.fuentes',
+                                                    populate: 'fabricante grupo especificacion especificacion2'
+                                                })
+                                                .populate({
+                                                    path:'pre_impresion.pelicula.tintas.tinta',
                                                     populate: 'fabricante grupo especificacion especificacion2'
                                                 })
                                                 .exec()

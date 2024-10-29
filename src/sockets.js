@@ -17,7 +17,8 @@ import opoligraficaEvents from '../events/opoligraficaEvents';
 import ocompraEvents from '../events/ocompraEvents';
 import departamentoEvents from '../events/departamentoEvents';
 import cargoEvents from '../events/cargoEvents';
-import trabajadorEvents from '../events/trabajadorEvents'
+import trabajadorEvents from '../events/trabajadorEvents';
+import horarioEvents from '../events/horarioEvents'
 
 export default function configureEvents(io) {
     grupoEvents(io);
@@ -40,4 +41,5 @@ export default function configureEvents(io) {
     departamentoEvents(io)
     cargoEvents(io)
     trabajadorEvents(io)
+    horarioEvents(io)
 }

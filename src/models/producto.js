@@ -45,7 +45,14 @@ let ProductoSchema = new Schema([{
             tipo: { type: String },
             marca: { type: String },
             tiempo_exposicion: { type: String }
-        }
+        },
+        pelicula:[{
+            color:{type:String},
+            tintas:[{
+                tinta: {type: Schema.Types.ObjectId, ref:'material'},
+                cantidad: {type:String}
+            }]
+        }]
     },
     impresion: {
         impresoras: { type: [{ type: Schema.Types.ObjectId, ref: 'maquina' }] },
@@ -55,6 +62,7 @@ let ProductoSchema = new Schema([{
     },
     post_impresion: {
         troqueladora: { type: [{ type: Schema.Types.ObjectId, ref: 'maquina' }] },
+        otros: { type: [{ type: Schema.Types.ObjectId, ref: 'maquina' }] },
         henidura: {
             alto: { type: String },
             ancho: { type: String }

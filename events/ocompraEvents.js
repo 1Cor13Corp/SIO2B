@@ -6,17 +6,26 @@ module.exports = (io) => {
         // *******************
         const EmitirOrdenes = async () => {
             try {
-            const ordenes = await ocompra.find({ borrado: false })
+                const ordenes = await ocompra.find({ borrado: false })
                                             .populate('cliente')
                                             .populate({
                                                 path: 'pedido',
                                                 populate: {
-                                                    path: 'producto',
-                                                    populate: {
-                                                    path: 'materia_prima.tintas.tinta materia_prima.sustrato identificacion.cliente'
-                                                    }
+                                                path: 'producto',
+                                                populate: [
+                                                    { path: 'impresion.impresoras', populate: { path: 'fases' } },
+                                                    { path: 'post_impresion.troqueladora', populate: { path: 'fases' } },
+                                                    { path: 'post_impresion.guillotina', populate: { path: 'fases' } },
+                                                    { path: 'post_impresion.pegadora', populate: { path: 'fases' } },
+                                                    { path: 'post_impresion.otros', populate: { path: 'fases' } },
+                                                    { path: 'pre_impresion.pelicula.tintas.tinta' },
+                                                    { path: 'post_impresion.pegamento.pega' },
+                                                    { path: 'materia_prima.barnices.barniz' },
+                                                    { path: 'materia_prima.sustrato' },
+                                                    { path: 'identificacion.cliente' }
+                                                ]
                                                 }
-                                                });
+                                            });     
             io.emit('SERVER:OrdenesCompra', ordenes);
             } catch (error) {
             console.error('Ha ocurrido un error al consultar las ordenes:', error);
