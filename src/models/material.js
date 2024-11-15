@@ -42,6 +42,9 @@ let MaterialSchema = new Schema([{
     origen:{
         type:String,
     },
+    capacidad:{
+        type:String,
+    },
     serie:{
         type:String,
     },

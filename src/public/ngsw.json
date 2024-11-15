@@ -1,0 +1,133 @@
+{
+  "configVersion": 1,
+  "timestamp": 1731699596545,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/709.cf278d3435698607.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.b40582c272f17d02.js",
+        "/manifest.webmanifest",
+        "/polyfills.6412990d305d5a8b.js",
+        "/runtime.98263d929330bee5.js",
+        "/styles.b631b91143e5cede.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/Gilroy-ExtraBold.b70871bf6670d3dc.otf",
+        "/Gilroy-Light.cba085185c2ff86c.otf",
+        "/Imagen-grande.d58cc24a721d1364.jpg",
+        "/assets/Excel.png",
+        "/assets/Imagen-grande.jpg",
+        "/assets/Imagen-pequeña-v2.jpg",
+        "/assets/Imagen-pequeña-v3.jpg",
+        "/assets/Imagen-pequeña.jpg",
+        "/assets/LOGO-SIO.png",
+        "/assets/Poligrafica.png",
+        "/assets/adobe.png",
+        "/assets/bg-dark.png",
+        "/assets/fondo/img1.jpg",
+        "/assets/fondo/img2.jpg",
+        "/assets/fondo/img3.jpg",
+        "/assets/fonts/Gilroy-ExtraBold.otf",
+        "/assets/fonts/Gilroy-Light.otf",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/logo_nav.png",
+        "/assets/poli_cintillo.png",
+        "/assets/powerpoint.png",
+        "/assets/promedio.gif",
+        "/assets/promedio.png",
+        "/assets/push-notifications-worker.js",
+        "/assets/user-icon-placeholder.png",
+        "/assets/word.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/709.cf278d3435698607.js": "a6d531cfc0eb1cad7868c2616d402f2a8a9d0a59",
+    "/Gilroy-ExtraBold.b70871bf6670d3dc.otf": "ebd136c81542a067830d5852b785d069403c4a15",
+    "/Gilroy-Light.cba085185c2ff86c.otf": "78410fd9e800f48e3ffa140497ba2d65ac169d22",
+    "/Imagen-grande.d58cc24a721d1364.jpg": "4279b7a0674a5ba1ca4cc6648dfc087a1991d320",
+    "/assets/Excel.png": "deaef5447c6da53300c9174f6ba58407b32ae019",
+    "/assets/Imagen-grande.jpg": "4279b7a0674a5ba1ca4cc6648dfc087a1991d320",
+    "/assets/Imagen-pequeña-v2.jpg": "26f83c1de68062a9ea53eeaf58df04263edaf86f",
+    "/assets/Imagen-pequeña-v3.jpg": "2cb3c290d1de106054100b740c7a1b3ce32e0cd5",
+    "/assets/Imagen-pequeña.jpg": "51d2dfbdc530640bafe07b10b4bd086478a2f1a1",
+    "/assets/LOGO-SIO.png": "1048ba39683dfa49a9dbac81cfcbf91746daf4bc",
+    "/assets/Poligrafica.png": "5c3c965020b4ef2ae07678f524ba69fc3454e263",
+    "/assets/adobe.png": "5d4f21c9d95b39958a04386b9248a3b6ed8ee96e",
+    "/assets/bg-dark.png": "9d659f3827006015da27a163f5882d3b6f4ef9dd",
+    "/assets/fondo/img1.jpg": "4518e48e17401e7ee80fa008674063a8257f00c7",
+    "/assets/fondo/img2.jpg": "35c6b3d5fcdf47b0fd83c8e0aa4bbd665f7577ed",
+    "/assets/fondo/img3.jpg": "697729424d2d61f4d0d113427d4ff09fa15a3fc8",
+    "/assets/fonts/Gilroy-ExtraBold.otf": "ebd136c81542a067830d5852b785d069403c4a15",
+    "/assets/fonts/Gilroy-Light.otf": "78410fd9e800f48e3ffa140497ba2d65ac169d22",
+    "/assets/icons/icon-128x128.png": "b1f06c7d714abb4a0cc4d1f7c954feb26826e4c4",
+    "/assets/icons/icon-144x144.png": "96a0d629765c1bc85d9263c6bc83094ca776d267",
+    "/assets/icons/icon-152x152.png": "b1fbbee3902eb96a7658e3bb006f31f78ca5a44c",
+    "/assets/icons/icon-192x192.png": "e4211163bf0911688fbfb80278d8ff4d2f77691d",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "279825a1ac4377032ae996a1832c641e33ccf1b6",
+    "/assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
+    "/assets/logo_nav.png": "30497aeb3d690eec21c3c0f81e9e1df1354ba7ea",
+    "/assets/poli_cintillo.png": "47a45de3d596d5db5ccf317eac4a20e2a0319f59",
+    "/assets/powerpoint.png": "9256fc68d585221e5bce6d2dd173cf11fddfa2d8",
+    "/assets/promedio.gif": "96f585655793e83606a141bc58f87cf9417b90d0",
+    "/assets/promedio.png": "3e27787ca804c244c55faedf385fc84eb1f68294",
+    "/assets/push-notifications-worker.js": "f90657f3bd5a8d8acb6967c9b27bfe5024bb3f5c",
+    "/assets/user-icon-placeholder.png": "e54ffa97184379f99ef9f1d3adc0318901901506",
+    "/assets/word.png": "71d3bed2a700f4c26c39bb04e338ef45c51a6b4c",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/index.html": "f7e89e185734de982c0851e46acf170178cad37f",
+    "/main.b40582c272f17d02.js": "7fef295658dee91cdb8a90682594d53c4a60082f",
+    "/manifest.webmanifest": "afeefb7ea8a6fda73d5cf4f84f6e50cac690ca34",
+    "/polyfills.6412990d305d5a8b.js": "2109b0dc3b5d8413fa81faa23cf6ddf860502137",
+    "/runtime.98263d929330bee5.js": "f3de54598ad6d712e5a1f03608fb72610b73033f",
+    "/styles.b631b91143e5cede.css": "ebab0661ba279dcef6dfcebca6551ee36c15210d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

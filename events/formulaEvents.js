@@ -5,7 +5,13 @@ module.exports = (io) => {
             try {
                 const Formula = await formula.find({borrado:false})
                                                 .populate('formula.material')
-                                                    .exec()
+                                                .populate({
+                                                    path: 'formula.material', // Primero populamos material
+                                                    populate: {
+                                                      path: 'fabricante', // Luego populamos fabricante dentro de material
+                                                    },
+                                                  })
+                                                  .exec()
                 io.emit('SERVER:formula', Formula)
             } catch (error) {
                 console.error('Error al buscar formulas:', error)

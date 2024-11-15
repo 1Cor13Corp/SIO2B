@@ -5,7 +5,7 @@ module.exports = (io) => {
             try {
               const Almacen = await almacen.find({ borrado: false })
                                            .populate('material')
-                                           .populate({path:'material',populate:'fabricante' })
+                                           .populate({path:'material',populate:'fabricante grupo' })
                                            .exec()
               io.emit('SERVER:almacen', Almacen)
             } catch (error) {
