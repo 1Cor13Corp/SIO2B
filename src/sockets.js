@@ -20,6 +20,7 @@ import cargoEvents from '../events/cargoEvents';
 import trabajadorEvents from '../events/trabajadorEvents';
 import horarioEvents from '../events/horarioEvents';
 import oproduccionEvents from '../events/oproduccionEvents';
+import requisicionEvents from '../events/requisicionEvents';
 
 export default function configureEvents(io) {
     grupoEvents(io);
@@ -44,4 +45,5 @@ export default function configureEvents(io) {
     trabajadorEvents(io)
     horarioEvents(io)
     oproduccionEvents(io)
+    requisicionEvents(io)
 }

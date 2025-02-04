@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1731699596545,
+  "timestamp": 1738684265009,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,13 +11,13 @@
         "ignoreVary": true
       },
       "urls": [
-        "/709.cf278d3435698607.js",
+        "/709.b6ab239a2dc4bf69.js",
         "/favicon.ico",
         "/index.html",
-        "/main.b40582c272f17d02.js",
+        "/main.7338dd304c796017.js",
         "/manifest.webmanifest",
         "/polyfills.6412990d305d5a8b.js",
-        "/runtime.98263d929330bee5.js",
+        "/runtime.fdd796a9e70c38a6.js",
         "/styles.b631b91143e5cede.css"
       ],
       "patterns": []
@@ -69,7 +69,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/709.cf278d3435698607.js": "a6d531cfc0eb1cad7868c2616d402f2a8a9d0a59",
+    "/709.b6ab239a2dc4bf69.js": "6b0921f0f7ed00c323aed41f26da72c54445d3b2",
     "/Gilroy-ExtraBold.b70871bf6670d3dc.otf": "ebd136c81542a067830d5852b785d069403c4a15",
     "/Gilroy-Light.cba085185c2ff86c.otf": "78410fd9e800f48e3ffa140497ba2d65ac169d22",
     "/Imagen-grande.d58cc24a721d1364.jpg": "4279b7a0674a5ba1ca4cc6648dfc087a1991d320",
@@ -104,11 +104,11 @@
     "/assets/user-icon-placeholder.png": "e54ffa97184379f99ef9f1d3adc0318901901506",
     "/assets/word.png": "71d3bed2a700f4c26c39bb04e338ef45c51a6b4c",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "f7e89e185734de982c0851e46acf170178cad37f",
-    "/main.b40582c272f17d02.js": "7fef295658dee91cdb8a90682594d53c4a60082f",
-    "/manifest.webmanifest": "afeefb7ea8a6fda73d5cf4f84f6e50cac690ca34",
+    "/index.html": "4712ab31f6a63f5f231e49f68cc6d9cb5b9fef5f",
+    "/main.7338dd304c796017.js": "522b3e977b4b7c3315e2086b155a64ddc0d6990b",
+    "/manifest.webmanifest": "809c64710f76c28e21d1e77c77bb128be1bea0a9",
     "/polyfills.6412990d305d5a8b.js": "2109b0dc3b5d8413fa81faa23cf6ddf860502137",
-    "/runtime.98263d929330bee5.js": "f3de54598ad6d712e5a1f03608fb72610b73033f",
+    "/runtime.fdd796a9e70c38a6.js": "2f8b2aac2354a75f623908a15136a8f4329732e0",
     "/styles.b631b91143e5cede.css": "ebab0661ba279dcef6dfcebca6551ee36c15210d"
   },
   "navigationUrls": [

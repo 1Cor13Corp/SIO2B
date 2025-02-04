@@ -4,6 +4,7 @@ import AnalisisCajas from "../src/models/analisis-cajas";
 import AnalisisPads from "../src/models/analisis-pads";
 import AnalisisOtros from "../src/models/analisis-otros";
 import recepcion from "../src/models/recepcion";
+import requisiciones from '../src/models/requisicion'
 
 module.exports = (io) => {
     io.on('connection', (socket) => {
@@ -44,6 +45,42 @@ module.exports = (io) => {
               } catch (err) {
                 console.error('No se pudo realizar la busqueda del almacen', err)
               }
+        })
+
+        socket.on('CLIENTE:AnalisisPreparacion', async (data) => {
+          // Verificar si los datos requeridos están completos
+          const NuevoAnalisis = new AnalisisTinta(data.data);
+          const doc = await AnalisisTinta.findOne({ _id: data.data._id });
+          if (doc) {
+            try{
+
+                await AnalisisTinta.findByIdAndUpdate(data.data._id, data.data);
+                console.log('Se actualizo nuevo analisis');
+                socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Se actualizo analisis', icon: 'success' });
+                EmitirAnalisisTinta();
+                return;  
+            }catch(err){
+                console.log('Error en actualizacion de analisis',err);
+                return
+            }
+        }else{
+          try {
+            await NuevoAnalisis.save();
+            const requisicion = await requisiciones.findOne({ _id: data.recepcion._id });
+            requisicion.analisis = NuevoAnalisis._id;
+            await requisicion.save();
+            // reception.materiales[data.index].forEach((material) => {
+            //   material.analisis = NuevoAnalisis._id;
+            // });
+            // await reception.save();
+            console.log('Se realizó nuevo analisis');
+            socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Se realizó nuevo analisis', icon: 'success' });
+          } catch (err) {
+            console.error('Hubo un error en el registro del analisis:', err);
+            socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Hubo un error en el registro del analisis', icon: 'error' });
+          }
+        }
+        EmitirAnalisisTinta();
         })
 
         socket.on('CLIENTE:AnalisisTinta', async (data) => {

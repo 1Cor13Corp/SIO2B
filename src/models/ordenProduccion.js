@@ -73,7 +73,8 @@ let OPSchema = new Schema([{
     },
     fases:[{
         maquina:{type:Schema.Types.ObjectId, ref:'maquina'},
-        fases:{type:Array}
+        fases:{type:Array},
+        nombre:{type:String}
     }]
 
 }],{
