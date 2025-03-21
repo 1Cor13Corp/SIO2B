@@ -2,6 +2,7 @@ const webPush = require('web-push');
 import almacen from "../src/models/almacen"
 import Registro from "../src/models/descuentos"
 import subscriptions from "../src/models/subscriptions"
+import Asignacion from "../src/models/Asignaciones"
 
 module.exports = (io) => {
     io.on('connection', (socket) => {
@@ -43,7 +44,7 @@ module.exports = (io) => {
               await emitirAlmacen()
           })
 
-socket.on('CLIENTE:Asignacion', async (data) => {
+socket.on('CLIENTE:Asignacion', async (data, asignacion) => {
     try {
         
       for(let i=0;i<data.length;i++){
@@ -51,21 +52,24 @@ socket.on('CLIENTE:Asignacion', async (data) => {
       }
         // Inserta los documentos en la colección Registro
         await Registro.insertMany(data);
+
+        //Insertar Asignacion
+        const New_Asignacion = new Asignacion(asignacion).save()
         
         socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Se realizó la asignación de material', icon: 'success' });
 
         // Recuperar y enviar notificaciones
-        const subscriptions_ = await subscriptions.find().lean(); // `lean()` para una mejor performance si no se necesita modificar los datos
-        const payload = JSON.stringify('Se realizó la asignación de material para la orden 2025001');
+        // const subscriptions_ = await subscriptions.find().lean(); // `lean()` para una mejor performance si no se necesita modificar los datos
+        // const payload = JSON.stringify('Se realizó la asignación de material para la orden 2025001');
         
-        // Evitar enviar notificaciones repetidas
-        const uniqueSubscriptions = new Set();
-        subscriptions_.forEach(subscription => {
-            if (!uniqueSubscriptions.has(subscription.endpoint)) {
-                uniqueSubscriptions.add(subscription.endpoint);
-                sendNotification(subscription, payload);
-            }
-        });
+        // // Evitar enviar notificaciones repetidas
+        // const uniqueSubscriptions = new Set();
+        // subscriptions_.forEach(subscription => {
+        //     if (!uniqueSubscriptions.has(subscription.endpoint)) {
+        //         uniqueSubscriptions.add(subscription.endpoint);
+        //         sendNotification(subscription, payload);
+        //     }
+        // });
     } catch (err) {
         console.log('Ha ocurrido un error en la realización del descuento', err);
     }

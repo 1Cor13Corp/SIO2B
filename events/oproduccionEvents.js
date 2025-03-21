@@ -2,6 +2,8 @@ const webPush = require('web-push');
 import op from '../src/models/ordenProduccion';
 import subscriptions from '../src/models/subscriptions';
 import gestion from '../src/models/gestiones';
+import Asignacion from '../src/models/Asignaciones';
+
 
 module.exports = (io) => {
   io.on('connection', (socket) => {
@@ -20,6 +22,12 @@ module.exports = (io) => {
                                     .populate('oc')
                                     .populate('sustrato.sustrato')
                                     .populate('tinta.tinta')
+                                    .populate({
+                                        path: 'tinta.tinta',
+                                        populate: {
+                                          path: 'fabricante'
+                                        }
+                                      })
                                     .populate('barniz.barniz')
                                     .populate('pega.pega')
                                     .populate('fases.maquina')
@@ -40,6 +48,25 @@ module.exports = (io) => {
           }
     };
 
+    const EmitirAsignaciones = async() =>{
+        try{
+            const asignaciones = await Asignacion.find()
+                        .populate('op', 'nombre fecha')
+                        .populate({
+                            path: 'material.material', // Segundo nivel
+                            populate: {
+                            path: 'material', // Tercer nivel
+                            }
+                        })
+                        .exec();
+
+            io.emit('SERVER:Asignaciones', asignaciones);
+
+        } catch(err){
+            console.error('Ha ocurrido un error en la busqueda de asignaciones', err);
+        }
+    }
+
 
     socket.on('CLIENTE:BuscarOrdenProduccion', async () => {
         await EmitirOP();
@@ -47,6 +74,10 @@ module.exports = (io) => {
 
     socket.on('Cliente:Gestiones', async () => {
         await EmitirGestiones();
+    })
+
+    socket.on('CLIENTE:Asignaciones', async() => {
+        await EmitirAsignaciones();
     })
 
     // ****************** NUEVA ORDEN DE PRODUCCIÓN ************************
@@ -76,6 +107,7 @@ module.exports = (io) => {
    
          console.log({ message: 'Notificaciones enviadas' });
          await EmitirOP();
+         await EmitirAsignaciones();
    
       } catch (error) {
          console.error('No se pudo registrar la orden de producción', error);
@@ -105,6 +137,31 @@ module.exports = (io) => {
       await EmitirOP();
   });
 
+  socket.on('CLIENTE:ActualizarOrdenProduccion_', async (data) => {
+
+    console.log(data.fases)
+    console.log('******************************************************************************+')
+    try {
+        // Asumiendo que 'data' tiene un campo 'id' para identificar la orden
+        const ordenActualizada = await op.findByIdAndUpdate(data._id, data, { new: true });
+        
+        if (ordenActualizada) {
+            console.log('Se actualizó el estado de la orden de producción a En producción ...', ordenActualizada);
+            
+            // Emitir mensaje al cliente después de actualizar la orden
+            socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Se actualizó el estado de la orden de producción a En producción', icon: 'success' });
+        } else {
+            console.log('No se encontró la orden de producción con el ID especificado');
+            socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'No se encontró la orden de producción con el ID especificado', icon: 'error' });
+        }
+    } catch (error) {
+        console.error('No se pudo actualizar la orden de producción', error);
+        socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Error en la actualización de la orden de producción', icon: 'error' });
+    }
+
+    await EmitirOP();
+});
+
   socket.on('CLIENTE:NuevaGestion', async (data) => {
     const nuevaGestion = new gestion(data);
  
@@ -115,14 +172,15 @@ module.exports = (io) => {
        // Emitir mensaje al cliente después de guardar la orden
        socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Se registró una nueva gestión', icon: 'success' });
        await EmitirOP();
+       await EmitirGestiones();
  
     } catch (error) {
        console.error('No se pudo registrar la orden de producción', error);
        socket.emit('SERVIDOR:enviaMensaje', { mensaje: 'Error en el registro de la orden de producción', icon: 'error' });
     }
-
-    await EmitirGestiones()
  });
+
+
 
 
   

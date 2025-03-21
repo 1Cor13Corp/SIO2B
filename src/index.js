@@ -10,11 +10,17 @@ import cors from 'cors'; // Importar el middleware CORS
 import { connectDB } from './db'
 connectDB();
 
-// Leer los archivos del certificado SSL y la clave
-const privateKey = fs.readFileSync('key.pem', 'utf8'); // Ruta a tu archivo key.pem
-const certificate = fs.readFileSync('cert.pem', 'utf8'); // Ruta a tu archivo cert.pem
+const privateKey = fs.readFileSync('c:/certificado/server/server.key', 'utf8');
+const certificate = fs.readFileSync('c:/certificado/server/server.crt', 'utf8');
+const ca = fs.readFileSync('c:/certificado/ca/mi_ca.pem', 'utf8');
 
-const credentials = { key: privateKey, cert: certificate };
+const credentials = { 
+  key: privateKey, 
+  cert: certificate,
+  ca: ca,
+  requestCert: false,
+  rejectUnauthorized: false
+};
 
 // Habilitar CORS para todos los orígenes (permitir todos los orígenes)
 app.use(cors({

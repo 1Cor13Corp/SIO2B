@@ -35,7 +35,7 @@ const gestionSchema = new mongoose.Schema({
         type:Number,
     },
     team:{
-        type:String,
+        type:Array,
     },
     defectos:[{
         paleta:{type:Number},
